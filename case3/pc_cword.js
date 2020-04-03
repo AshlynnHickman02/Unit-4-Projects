@@ -58,12 +58,22 @@ var typeDirection;
 
 window.onload = init;
 function init(){
+ 
    allLetters = document.querySelectorAll("table#crossword span");
    currentLetter = allLetters[0];
    var acrossID = currentLetter.dataset.clueA;
    var downID = currentLetter.dataset.clueD;
    acrossClue = document.getElementById("acrossID");
-   downClue = document.getElementById("downID");
+   downClue = document.getElementById("downID");  
+   
+   formatPuzzle(currentLetter){
+      for(i = 0; i < allLetters.length; i++){
+         allLetters[i].style.cursor = "pointer";
+         allLetters[i].addEventListener("onmousedown", function puzzle(){
+            formatPuzzle(event);
+         })
+      }
+   }
 }
 
 // function formatPuzzle(puzzleLetter){
@@ -115,7 +125,39 @@ function formatPuzzle(puzzleLetter) {
       currentLetter.style.backgroundColor = "rgb(255, 191, 191)";
    }
 }
- 
+
+function selectLetter(){
+   var leftLetter = currentLetter.dataset.left;
+   var upLetter = currentLetter.dataset.up;
+   var downLetter = currentLetter.dataset.down;
+   var rightLetter = currentLetter.dataset.right;
+   var userKey = "e.keycode";
+
+   
+   if(userKey === 37){
+      formatPuzzle(leftLetter);
+   }
+   else if(userKey === 38){
+      formatPuzzle(upLetter);
+   } 
+   else if (userKey === 39 || userKey === 9){
+      formatPuzzle(rightLetter);
+   }
+   else if(userKey === 40 || userKey === 13){
+      formatPuzzle(downLetter);
+   }
+   else if(userKey === 8 || userKey === 46){
+      currentLetter = "";
+   }
+   else if (userKey === 32){
+      switchTypeDirection();
+   }
+   else if(userKey >= 65 && userKey <=  90){
+      currentLetter = getChar(userKey);
+   }
+
+   e.preventDefault();
+}
 
 
 
