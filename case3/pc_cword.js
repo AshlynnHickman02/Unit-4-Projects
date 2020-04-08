@@ -58,7 +58,7 @@ var typeDirection;
 
 window.onload = init;
 function init(){
- 
+   
    allLetters = document.querySelectorAll("table#crossword span");
    currentLetter = allLetters[0];
    var acrossID = currentLetter.dataset.clueA;
@@ -74,8 +74,16 @@ function init(){
          })
       }
    }
+
+   addEventListener("keydown", selectLetter());
+
+   var typeImage = document.getElementById("directionImg").innerHTML;
+   typeImage[i].style.cursor = "pointer"; 
+   switchTypeDirection(typeImage);
 }
 
+
+// i dont rememeber what i was trying to do here :/
 // function formatPuzzle(puzzleLetter){
 //    currentLetter = puzzleLetter;
 //    for(i = 0; i > puzzleLetter)
@@ -157,6 +165,23 @@ function selectLetter(){
    }
 
    e.preventDefault();
+}
+
+function switchTypeDirection(){
+   var typeImage = document.getElementById("directionImg").innerHTML;
+   
+   if(typeImage === "right"){
+      typeDirection = "down";
+      // change the src attribute of typeImage to "pc_right.png"
+
+      currentLetter[i].style.backgroundColor = "rgb(255, 191, 191);";
+   }
+   else{
+      typeDirection = "right";
+      // change the src attribute of typeImage to "pc_down.png"
+
+      currentLetter[i].style.backgroundColor = "rgb(191, 191, 255);";
+   }
 }
 
 
