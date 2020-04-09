@@ -49,6 +49,7 @@
 
 */
 
+// commented out all of my mistakes where possible to show what I did wrong 
 var allLetters; 
 var currentLetter; 
 var wordLetters; 
@@ -75,11 +76,13 @@ function init(){
       }
    }
 
-   addEventListener("keydown", selectLetter());
+   document.onkeydown = selectLetter;
+   // addEventListener("keydown", selectLetter());
 
-   var typeImage = document.getElementById("directionImg").innerHTML;
-   typeImage[i].style.cursor = "pointer"; 
-   switchTypeDirection(typeImage);
+   var typeImage = document.getElementById("directionImg");
+   typeImage.style.cursor = "pointer";
+   typeImage.onclick = switchTypeDirection; 
+   // switchTypeDirection(typeImage);
 }
 
 
@@ -168,19 +171,19 @@ function selectLetter(){
 }
 
 function switchTypeDirection(){
-   var typeImage = document.getElementById("directionImg").innerHTML;
+   var typeImage = document.getElementById("directionImg");
    
    if(typeImage === "right"){
       typeDirection = "down";
-      // change the src attribute of typeImage to "pc_right.png"
-
-      currentLetter[i].style.backgroundColor = "rgb(255, 191, 191);";
+      // change the src attribute of typeImage to "pc_right.png" didn't know this one 
+      typeImage.src = "pc_down.png";
+      currentLetter.style.backgroundColor = "rgb(255, 191, 191);";
    }
    else{
       typeDirection = "right";
-      // change the src attribute of typeImage to "pc_down.png"
-
-      currentLetter[i].style.backgroundColor = "rgb(191, 191, 255);";
+      // change the src attribute of typeImage to "pc_down.png" didn't know this one 
+      typeImage.src = "pc_right.png";
+      currentLetter.style.backgroundColor = "rgb(191, 191, 255);";
    }
 }
 
