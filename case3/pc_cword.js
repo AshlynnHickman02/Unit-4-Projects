@@ -84,14 +84,29 @@ function init(){
    typeImage.onclick = switchTypeDirection; 
    // switchTypeDirection(typeImage);
 
-   // i dont know how to begin step 13 
+   for (var i = 0; i < allLetters.length; i++) {
+      if (allLetters[i].textContent !== allLetters[i].dataset.letter) {
+         allLetters[i].style.color = "red";
+         setTimeout(function() {
+            for (var i = 0; i < allLetters.length; i++) {
+               allLetters[i].style.color = "";
+            }
+         }, 3000);
+      }
+   }
+   document.getElementById("showSolution").onclick = function() {
+      for (var i = 0; i < allLetters.length; i++) {
+         allLetters[i].textContent = allLetters[i].dataset.letter;
+      }
+   };
+}
 
-   // i dont know how to begin step 14 
+  
 
    
 
 
-}
+
 
 
 // i dont rememeber what i was trying to do here :/
