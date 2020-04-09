@@ -83,6 +83,14 @@ function init(){
    typeImage.style.cursor = "pointer";
    typeImage.onclick = switchTypeDirection; 
    // switchTypeDirection(typeImage);
+
+   // i dont know how to begin step 13 
+
+   // i dont know how to begin step 14 
+
+   
+
+
 }
 
 
